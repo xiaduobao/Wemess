@@ -18,6 +18,7 @@ public class CountTask extends RecursiveTask<Integer> {
     }
 
 
+    @Override
     protected Integer compute() {
         int sum = 0;
         //如果任务足够小就计算
@@ -43,7 +44,7 @@ public class CountTask extends RecursiveTask<Integer> {
 
     public static void main(String[] args){
         ForkJoinPool pool = new ForkJoinPool();
-        CountTask task = new CountTask(1,4);
+        CountTask task = new CountTask(1,100);
         Future<Integer> result = pool.submit(task);
         try {
             System.out.println(result.get());
